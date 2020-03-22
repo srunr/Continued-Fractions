@@ -74,12 +74,12 @@ private
    --  The Decimal value of e_Real is actually calculated in 
    --  Radix 10.0**No_Of_Decimal_Digits_Per_Chunk. i.e. in chunks of 5-8 digits.
 
-   Bits_Per_e_Real : constant := No_Of_Bits_In_Radix * Mantissa'Length;
+   Bits_Per_e_Real : Integer := No_Of_Bits_In_Radix * Mantissa'Length;
 
-   Decimal_Digits_Per_e_Real : constant := 1 + (Bits_Per_e_Real*1000 - 1) / 3322;
+   Decimal_Digits_Per_e_Real : Integer := 1 + (Bits_Per_e_Real*1000 - 1) / 3322;
    -- Ceiling (Bits_Per_e_Real / 3.322).
 
-   Chunks_Per_e_Real : constant :=
+   Chunks_Per_e_Real : Integer :=
           1 + (Decimal_Digits_Per_e_Real - 1) / No_Of_Decimal_Digits_Per_Chunk;
    --  Ceiling (Decimal_Digits_Per_e_Real / No_Of_Decimal_Digits_Per_Chunk)
 

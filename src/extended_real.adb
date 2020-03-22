@@ -2702,7 +2702,7 @@ package body Extended_Real is
    is
       Digit_Minus_1, Digit_Minus_2 : Digit_Type := Digit_Zero; -- Essential init
 
-      Ultimate_No_of_Digits : constant := Ultimate_Digit + 1;
+      Ultimate_No_of_Digits : e_Integer := Ultimate_Digit + 1;
       --  equals: Digit_Index'Last - Digit_Index'First + 1  =  Mantissa'Length
 
       -------------------------------------
@@ -2910,7 +2910,7 @@ package body Extended_Real is
       Z   : e_Real := X;
       Digit_Minus_1, Digit_Minus_2 : Digit_Type := Digit_Zero; -- Essential init
 
-      Ultimate_No_of_Digits : constant := Ultimate_Digit + 1;
+      Ultimate_No_of_Digits : e_Integer := Ultimate_Digit + 1;
       --  equals: Digit_Index'Last - Digit_Index'First + 1  =  Mantissa'Length
 
       -------------------------------------
@@ -3152,7 +3152,7 @@ package body Extended_Real is
    is
       Digit_Minus_1, Digit_Minus_2 : Digit_Type := Digit_Zero; -- Essential init
 
-      Ultimate_No_of_Digits : constant := Ultimate_Digit + 1;
+      Ultimate_No_of_Digits : e_Integer := Ultimate_Digit + 1;
       --  equals: Digit_Index'Last - Digit_Index'First + 1  =  Mantissa'Length
 
       -------------------------------------

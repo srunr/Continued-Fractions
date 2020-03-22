@@ -245,6 +245,7 @@ generic
    type Real is digits <>;
    --  Make it 15 digits or greater.  This is checked.
    --  This is usually the type you are going to replace with e_Real.
+   desired_decimal_digits : Integer := 28;
 package Extended_Real is
 
    pragma Pure (Extended_Real);
@@ -262,7 +263,7 @@ package Extended_Real is
    --
    --  The 2 parameters follow next, along with instructions.
 
-   Desired_Decimal_Digit_Precision : constant := 100;
+   Desired_Decimal_Digit_Precision : Integer := (if desired_decimal_digits < 28 then 28 else desired_decimal_digits);
    --  If you request       28 Decimal Digits, you usually get 29 or more.
    --  If you request 29 to 37 Decimal Digits, you usually get 38 or more.
    --  If you request 38 to 46 Decimal Digits, you usually get 47 or more.
@@ -600,9 +601,9 @@ private
    -- B is for binary, E for extended:
 
    ILog_Base_2_Of_10_x_1000 : constant := 3322; -- Round UP.
-   D              : constant := Desired_Decimal_Digit_Precision - 2;
-   No_Of_B_Digits : constant := (ILog_Base_2_Of_10_x_1000 * D - 1) / 1000 + 2;
-   No_Of_e_Digits : constant := (No_Of_B_Digits - 1) / No_Of_Bits_In_Radix + 1;
+   D              : Integer := Desired_Decimal_Digit_Precision - 2;
+   No_Of_B_Digits : Integer := (ILog_Base_2_Of_10_x_1000 * D - 1) / 1000 + 2;
+   No_Of_e_Digits : Integer := (No_Of_B_Digits - 1) / No_Of_Bits_In_Radix + 1;
 
    --
    -- The following parameter settings give us 2 more words in the Mantissa
@@ -637,7 +638,7 @@ private
 
    --  The following are not decimal digits.
 
-   Ultimate_Correct_Digit : constant e_Integer := No_Of_e_Digits - 1;
+   Ultimate_Correct_Digit : e_Integer := e_Int(No_Of_e_Digits) - e_Int(1);
    Ultimate_Digit : constant e_Integer := No_Of_Guard_Digits + Ultimate_Correct_Digit;
 
    subtype Digits_Base is e_Integer range 0..Ultimate_Digit+1;
